@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="../../processing.js"></script>
+<link rel="stylesheet" href="../style.css"/></head>
+<body>
+<h1>A*</h1>
+
+<p>
+This is a demonstration of the A* algorithm on a grid world where the 
+goal node is centered at the far right edge and the initial node is
+centered at 50 pixels from the left edge.  The colors represent node
+generation time.  Yellow represents the earliest nodes generated and
+red represents the last nodes generated.  This visualization, 
+inspired by <a href="http://www.cs.unh.edu/~jtd7/">Jordan Thayer</a>,
+was implemented using <a href='http://processingjs.org'>processing.js</a>.
+</p>
+
+<p>
+<center>
+<canvas data-processing-sources=" astar.js ../ai.js ../shapes.js ../openlist.js ../gridworld.js">
+</canvas>
+</center>
+</p>
+
+</body>
+</html>
