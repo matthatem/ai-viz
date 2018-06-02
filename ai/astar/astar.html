@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <script src="../../processing.js"></script>
-<link rel="stylesheet" href="../style.css"/></head>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
 <body>
-<h1>A*</h1>
+  <h1>A*</h1>
 
-<p>
-This is a demonstration of the A* algorithm on a grid world where the 
-goal node is centered at the far right edge and the initial node is
-centered at 50 pixels from the left edge.  The colors represent node
-generation time.  Yellow represents the earliest nodes generated and
-red represents the last nodes generated.  This visualization, 
-inspired by <a href="http://www.cs.unh.edu/~jtd7/">Jordan Thayer</a>,
-was implemented using <a href='http://processingjs.org'>processing.js</a>.
-</p>
+  <p>
+    This is a visualization of the A* algorithm on a grid world. Obstacles in the gridworld are represented by black pixels.
+    The A* search algorithm tries to a find a shortes path between the starting location and the goal location. The goal
+    location is centered vertically at the far right edge and the starting location is highlighted in green. The colors represent
+    time (which iteration of search) a particular location was explored by the search. Yellow locations were explored earlier
+    and dark red locations were search toward the end of the search. This visualization was implemented using
+    <a href='http://processingjs.org'>processing.js</a>.
+  </p>
 
-<p>
-<center>
-<canvas data-processing-sources=" astar.js ../ai.js ../shapes.js ../openlist.js ../gridworld.js">
-</canvas>
-</center>
-</p>
+  <p>
+    <center>
+      <canvas data-processing-sources=" astar.js ../ai.js ../shapes.js ../openlist.js ../gridworld.js">
+      </canvas>
+    </center>
+  </p>
 
 </body>
+
 </html>
