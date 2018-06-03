@@ -7,34 +7,43 @@
 </head>
 
 <body>
-  <h1>A*</h1>
+  <h1>The Shape of Search</h1>
 
   <p>
-    This is a visualization of the A* algorithm on a grid world. Obstacles in the gridworld are represented by black pixels.
-    The A* search algorithm tries to a find a shortes path between the starting location and the goal location. The goal
-    location is centered vertically at the far right edge and the starting location is highlighted in green. The colors represent
-    the order in which locations were explored by the search. Yellow locations were explored earlier
-    and dark red locations were explored toward the end of the search. This visualization was implemented using
-    <a href='http://processingjs.org'>processing.js</a>.
-  </p>
 
-  <p>
-    <center>
-      <canvas id="sketch" data-processing-sources=" astar.js ../ai.js ../shapes.js ../openlist.js ../gridworld.js">
-      </canvas>
-      <input id="pause" type="button" value="Reset" onclick="resetSketch();" />
-      <input id="weight" type="text">
+    <canvas id="sketch" data-processing-sources=" astar.js ../ai.js ../shapes.js ../openlist.js ../gridworld.js">
+    </canvas>
+
+    <p>
+      Algorithm: <select id="algorithm">
+        <option value="astar">A* Search</option>
+        <option value="bfs">Breadth-First Search</option>
+      </select>
+      &nbsp;&nbsp;Heuristic Weight: <input id="weight" type="text" value="1">
+      &nbsp;&nbsp;<input id="pause" type="button" value="Restart" onclick="resetSketch();" />
       <script type="application/javascript">
         var processingInstance;
         function resetSketch() {
           if (!processingInstance) {
             processingInstance = Processing.getInstanceById('sketch');
           }
-          processingInstance.setup();
+          var algorithm = document.getElementById("algorithm").value;
+          var weight = document.getElementById("weight").value;
+          processingInstance.reset(algorithm, weight);
         }
       </script>
+    </p>
 
-    </center>
+    <p>
+      This is a visualization of the A* algorithm on a grid world. Obstacles in the gridworld are represented by black pixels.
+      The A* search algorithm tries to a find a shortest path between the starting location and the goal location. The goal
+      location is centered vertically at the far right edge and the starting location is centered vertically about 50 pixels
+      from the far left. The colors represent the order in which locations were explored by the search. Yellow locations
+      were explored earlier and dark red locations were explored toward the end of the search. This visualization was implemented
+      using
+      <a href='http://processingjs.org'>processing.js</a>.
+    </p>
+
   </p>
 
 </body>

@@ -95,14 +95,13 @@ class GridWorld {
 } 
 
 class GridState {
-  int x_, y_, g_, h_, f_;
+  int x_, y_, g_, h_;
   GridState p_;
 
   GridState(int x, int y, GridState p) {
     x_ = x; y_ = y; p_ = p; 
     (p != null) ? g_ = p_.g_+1 : g_ = 0;
     h_ = gridWorld.computeHeuristic(x_, y_);
-    f_ = g_ + h_;
   }
 
   boolean equals(GridState other) {
