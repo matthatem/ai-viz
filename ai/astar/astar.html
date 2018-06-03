@@ -2,49 +2,111 @@
 <html>
 
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Matthew T. Hatem: The Shape of Search</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="../../../matthatem.css" rel="stylesheet">
+
   <script src="../../processing.js"></script>
   <link rel="stylesheet" href="../style.css" />
 </head>
 
+
 <body>
+
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">Matthew T. Hatem</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="../../../index.html">About</a>
+          </li>
+          <li>
+            <a href="../../../papers.html">Papers</a>
+          </li>
+          <li>
+            <a href="../../../cv/hatem-cv.pdf">CV</a>
+          </li>
+          <!-- <li><a href="contact.html">Contact</a></li> -->
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </div>
+
   <h1>The Shape of Search</h1>
 
-  <p>
-
-    <canvas id="sketch" data-processing-sources=" astar.js ../ai.js ../shapes.js ../openlist.js ../gridworld.js">
-    </canvas>
+  <div id="processing" class="processing">
 
     <p>
-      Algorithm: <select id="algorithm">
-        <option value="astar">A* Search</option>
-        <option value="bfs">Breadth-First Search</option>
-      </select>
-      &nbsp;&nbsp;Heuristic Weight: <input id="weight" type="text" value="1">
-      &nbsp;&nbsp;<input id="pause" type="button" value="Restart" onclick="resetSketch();" />
-      <script type="application/javascript">
-        var processingInstance;
-        function resetSketch() {
-          if (!processingInstance) {
-            processingInstance = Processing.getInstanceById('sketch');
+
+      <canvas id="sketch" data-processing-sources=" astar.js ../ai.js ../shapes.js ../openlist.js ../gridworld.js">
+      </canvas>
+
+      <p width="800">
+        Algorithm:
+        <select id="algorithm">
+          <option value="astar">A* Search</option>
+          <option value="bfs">Breadth-First Search</option>
+        </select>
+        &nbsp;&nbsp;Heuristic Weight:
+        <input id="weight" type="text" value="1"> &nbsp;&nbsp;
+        <input id="pause" type="button" value="Restart" onclick="resetSketch();" />
+        <script type="application/javascript">
+          var processingInstance;
+          function resetSketch() {
+            if (!processingInstance) {
+              processingInstance = Processing.getInstanceById('sketch');
+            }
+            var algorithm = document.getElementById("algorithm").value;
+            var weight = document.getElementById("weight").value;
+            processingInstance.reset(algorithm, weight);
           }
-          var algorithm = document.getElementById("algorithm").value;
-          var weight = document.getElementById("weight").value;
-          processingInstance.reset(algorithm, weight);
-        }
-      </script>
+        </script>
+      </p>
+
+      <p>
+        This is a visualization of the A* search and breadth-first search algorithms on a grid world. Obstacles in the gridworld
+        are represented by black pixels. The A* search algorithm tries to a find a shortest path between the starting location
+        and the goal location. The goal location is centered vertically at the far right edge and the starting location is
+        centered vertically about 50 pixels from the far left. The colors represent the order in which locations were explored
+        by the search. Yellow locations were explored earlier and dark red locations were explored toward the end of the
+        search. Despite the animations, this visualization is not meant to show the speed of the search.
+      </p>
+
+      <p>
+        You can choose between A* and Breadth-First search. Try setting a weight on the heuristic (between 1.1 and 1.5) for A*. Increasing
+        the weight causes A* to behave more like a greedy search; finding solutions quickly by pruning much more of the search
+        space at the cost of solution quality. A* is only guaranteed to return the shortest path to the goal with a weight
+        of 1. Increasing the weight leads to longer solution paths.
+      </p>
+
+      <p>
+        This visualization was implemented using
+        <a href='http://processingjs.org'>processing.js</a>.
+      </p>
+
     </p>
 
-    <p>
-      This is a visualization of the A* algorithm on a grid world. Obstacles in the gridworld are represented by black pixels.
-      The A* search algorithm tries to a find a shortest path between the starting location and the goal location. The goal
-      location is centered vertically at the far right edge and the starting location is centered vertically about 50 pixels
-      from the far left. The colors represent the order in which locations were explored by the search. Yellow locations
-      were explored earlier and dark red locations were explored toward the end of the search. This visualization was implemented
-      using
-      <a href='http://processingjs.org'>processing.js</a>.
-    </p>
-
-  </p>
+  </div>
 
 </body>
 

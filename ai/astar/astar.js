@@ -29,8 +29,10 @@ void reset(algorithm, weight) {
     weight = 0;
     layerSize = 200;
   }
-  else if (weight <= 0) {
-    weight = 1;
+  else {
+    if (weight <= 0) {
+      weight = 1;
+    }
   }
   scoreFunction = new FScoreFunction(weight);
   open = new OpenList(scoreFunction);
